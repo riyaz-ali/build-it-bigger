@@ -11,13 +11,10 @@ import com.udacity.gradle.builditbigger.myandroidlibrary.JokeDisplayActivity;
 
 public class MainActivity extends AppCompatActivity {
 
-  private JokeTeller teller;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        teller = JokeTeller.getATeller();
     }
 
 
@@ -44,8 +41,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void tellJoke(View view) {
-      Intent intent = JokeDisplayActivity.intentToDisplayJoke(this, teller.tellAJoke());
-      startActivity(intent);
+      new FetchJokeAsyncTask(this).execute();
     }
 
 

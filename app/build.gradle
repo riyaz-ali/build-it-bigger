@@ -30,6 +30,10 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+
+        debug {
+            buildConfigField "String", "URL", "\"http://192.168.43.215:8080/_ah/api\""
+        }
     }
 }
 
@@ -49,6 +53,5 @@ dependencies {
     testImplementation 'junit:junit:4.12'
 
   implementation(project(':common'))
-  implementation(project(':jokes'))
   implementation(project(':myandroidlibrary'))
 }
