@@ -1,5 +1,6 @@
 package com.udacity.gradle.builditbigger;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -39,7 +40,9 @@ public class FetchJokeAsyncTask extends AsyncTask<Void, Void, String> {
   }
 
   @Override protected void onPostExecute(String s) {
-    Intent intent = JokeDisplayActivity.intentToDisplayJoke(context, Joke.builder().content(s).build());
-    context.startActivity(intent);
+    if(context instanceof Activity) {
+      Intent intent = JokeDisplayActivity.intentToDisplayJoke(context, Joke.builder().content(s).build());
+      context.startActivity(intent);
+    }
   }
 }
